@@ -35,7 +35,7 @@ This Loan Management System is built using **Django REST Framework (DRF)**. It a
 ## Installation & Setup
 ### **Step 1: Clone Repository & Install Dependencies**
 ```sh
-git clone <repo_url>
+git clone https://github.com/vishak7034/Loan-Management/
 cd loan_management
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
