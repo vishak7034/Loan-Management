@@ -3,6 +3,11 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 from .models import Loan, CustomUser
 from .serializers import LoanSerializer, UserSerializer
+from rest_framework import generics, status
+from rest_framework.response import Response
+from .models import Loan
+from rest_framework.exceptions import NotFound
+from django.db import transaction
 
 class RegisterView(generics.CreateAPIView):
     queryset = CustomUser.objects.all()
@@ -29,11 +34,7 @@ class LoanDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Loan.objects.all()
     serializer_class = LoanSerializer
     permission_classes = [permissions.IsAuthenticated]
-from rest_framework import generics, status
-from rest_framework.response import Response
-from .models import Loan
-from rest_framework.exceptions import NotFound
-from django.db import transaction
+
 
 class LoanForeclosureView(generics.GenericAPIView):
     def post(self, request, loan_id):
